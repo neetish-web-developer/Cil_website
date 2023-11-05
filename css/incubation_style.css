@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    
+    
+}
+
+.container_incu {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+}
+
+.section {
+    background-color: rgba(68, 58, 11, 0);
+    flex: 1;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+
+
+h2 {
+    color: #007BFF;
+}
+h3{
+    font-size: 18px;
+    color: rgba(15, 167, 228, 0.733);
+}
+
+.incu_sec1, .incu_ol {
+    margin: 0;
+    padding-left: 20px;
+    
+}
+
+ .incu_li {
+    list-style-type: disc;
+}
+.incu_li1{
+   list-style-type:square;
+
+}
+.incu_li2{
+    list-style-type: lower-roman;
+}
+
+.incu_ol .incu_li {
+    list-style-type: decimal;
+}
+
+.apply-now-btn {
+    display: block;
+    width: 150px;
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    margin: 1rem auto;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.apply-now-btn:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .row {
+        display: block;
+    }
+}
+.container h3{
+    color: rgb(250, 247, 247);
+}
