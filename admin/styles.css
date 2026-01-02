@@ -1,0 +1,164 @@
+body {
+    display: flex;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    height: 100vh;
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.navbar a {
+    color: white;
+    padding: 15px 0px;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+.main-content {
+    margin-left: 200px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.form-container {
+    display:block;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="file"],
+form textarea {
+    padding: 10px;
+    margin-bottom: 7.5px; /* Reduced from 15px to 50% */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+    background-color: #575757;
+}
+
+.form-column {
+    display: flexbox;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+img {
+    max-width: 100px;
+}
+
+.actions a {
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.actions a:hover {
+    background-color: #f4f4f4;
+}
+
+/* Logout button in navbar */
+.logout-btn {
+    float: right;
+    margin-top: auto;
+    margin-bottom: 25px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.logout-btn:hover {
+    background-color: #45a049;
+}
+#preview-box { margin-top: 10px; text-align: center; }
+#preview-img {
+        max-width: 200px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        border-radius: 5px;
+}

@@ -1,0 +1,63 @@
+.main-content {
+    padding: 20px;
+}
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.form-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-column label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-column input,
+.form-column textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-column input[type="file"] {
+    padding: 3px;
+}
+.form-column textarea {
+    resize: vertical;
+    height: 100px;
+}
+.submit-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.submit-btn input {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+.submit-btn input:hover {
+    background-color: #0056b3;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+table th {
+    background-color: #f4f4f4;
+}
+table img {
+    max-width: 100px;
+}
