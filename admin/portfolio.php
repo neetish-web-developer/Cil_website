@@ -70,7 +70,7 @@ table img { max-width: 100px; }
 
                 <div class="form-column">
                     <label for="message">Message:</label>
-                    <textarea id="message" name="message" required><?= $edit_mode ? $edit_data['message'] : '' ?></textarea>
+                    <textarea id="message" name="message" placeholder="Message (Max 430 Characters)" required><?= $edit_mode ? $edit_data['message'] : '' ?></textarea>
 
                     <label for="image">Image:</label>
                     <input type="file" id="image" name="upload_img" accept="image/*" onchange="previewImage(event)">

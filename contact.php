@@ -106,16 +106,16 @@
                 <div class="infoBox">
                     <div>
                         <span><ion-icon name="location"></ion-icon></span>
-                        <p>i2h Building, IIT (ISM) Dhanbad <br>India</p>
+                        <p>4<sup>th</sup> Floor,i2h Building, IIT (ISM)<br> Dhanbad, Jharkhand,  India</p>
                     </div>
                     <div>
                         <span><ion-icon name="mail"></ion-icon></span>
                         <a href="mailto:cii@iitism.ac.in">cii@iitism.ac.in</a>
                     </div>
-                    <div>
+                    <!-- <div>
                         <span><ion-icon name="call"></ion-icon></span>
                         <a href="tel:+919449247076">+91 9449247076</a>
-                    </div>
+                    </div> -->
                     <div>
                         <span><ion-icon name="call"></ion-icon></span>
                         <a href="tel:+916299255860">+91 6299255860</a>
@@ -154,19 +154,19 @@
                         <li><a href="events.php">Events</a></li>
                         <li><a href="portfolio.php">Protfolio</a></li>
                         <li><a href="team.php">Our Team</a></li>
-                        <li><a href="contact.php" class="active">Contact</a></li>
+                        <!-- <li><a href="contact.php" class="active">Contact</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> i2h Building, IIT (ISM), Dhanbad, Jharkhand, India
-                        </li>
-                        <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
-                        <li><i class="fas fa-phone"></i> +91 9449247076</li>
-                        <li><i class="fas fa-phone"></i> +91 6299255860</li>
-                    </ul>
-                </div>
+          <h3>Contact Us</h3>
+          <ul class="contact-info">
+            <li><i class="fas fa-map-marker-alt"></i> 4<sup>th</sup> Floor, i2h Building, IIT (ISM),</li>
+            <li> Dhanbad, Jharkhand ,India</li>
+            <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
+            <!-- <li><i class="fas fa-phone"></i> +91 9449247076</li> -->
+            <li><i class="fas fa-phone"></i> +91 6299255860</li>
+          </ul>
+        </div>
             </div>
         </div>
     </footer>
