@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1%;
-    
+    border-bottom: 3px solid;
     }
   
   .logo img {
@@ -67,7 +67,6 @@
     width: auto;
     height: 780px;
     overflow: hidden;
-    border-top: 5px solid;
     border-bottom: 5px solid;
     border-radius: 5px;
   }

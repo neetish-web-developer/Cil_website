@@ -172,7 +172,7 @@ require 'admin/connection.php';
 
 <!-- TEAM SECTION -->
 <section class="team-section">
-    <div class="name"><p>Our Team Members</p></div>
+    <div class="name"><p>Team Members</p></div>
     <div class="team-container">
         <?php 
         $rows = mysqli_query($conn, "SELECT * FROM team ORDER BY id ASC"); // Assuming you have a 'team' table
