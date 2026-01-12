@@ -316,5 +316,104 @@
   color: #fff;
 }
 /*footer ends*/
+/* about section of homepage */
+.mission-section {
+    padding: 60px 10%;
+    background-color: #cfee95;
+}
+
+.mission-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px; /* Space between image and text */
+}
+
+.mission-image {
+    flex: 1;
+}
+
+.mission-image img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mission-text {
+    flex: 1;
+}
+
+.mission-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #444;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    .mission-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .mission-text p {
+        text-align: center;
+    }
+}
 
 
+/* supported by */
+.supported-by {
+    padding: 40px 0;
+    background-color: #fff;
+    text-align: center;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.support-title {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px; /* Space between logos */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.support-logo img {
+    height: 80px; /* Uniform height for all logos */
+    width: auto;
+    filter: grayscale(50%); /* Optional: makes them look professional */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.support-logo img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .logo-grid {
+        gap: 30px;
+    }
+    .support-logo img {
+        height: 60px;
+    }
+}

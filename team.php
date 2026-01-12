@@ -165,6 +165,7 @@ require 'admin/connection.php';
             <li><a href="events.php">Events</a></li>
             <li><a href="portfolio.php">Portfolio</a></li>
             <li><a href="team.php" class="active">Our Team</a></li>
+            <li><a href="newsletter.php">Newsletters</a></li>
             <li><a href="contact.php">Contact</a></li>
         </ul>
     </nav>
@@ -207,6 +208,7 @@ require 'admin/connection.php';
                         <li><a href="events.php">Events</a></li>
                         <li><a href="portfolio.php">Protfolio</a></li>
                         <!-- <li><a href="team.php">Our Team</a></li> -->
+                         <li><a href="newsletter.php">Newsletters</a></li>
                         <li><a href="contact.php" class="active">Contact</a></li>
                     </ul>
                 </div>

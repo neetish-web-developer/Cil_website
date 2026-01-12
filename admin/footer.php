@@ -1,5 +1,5 @@
 <hr>
 <footer>
-    <p>&copy; 2024 Admin Panel</p>
+    <p>&copy; 2026 Admin Panel</p>
 </footer>
 

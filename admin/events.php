@@ -4,17 +4,16 @@ include 'connection.php';
 
 // ------------------- Handle Edit Button Click -------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_event_id'])) {
-    // session_start();
+    // Ensure session is started if not already
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $_SESSION['edit_event_id'] = $_POST['edit_event_id'];
 }
 
 // ------------------- Load Edit Data from Session -------------------
 $edit_mode = false;
 $edit_data = [];
-
-// if (session_status() == PHP_SESSION_NONE) {
-//     session_start();
-// }
 
 if (isset($_SESSION['edit_event_id'])) {
     $edit_mode = true;
@@ -26,76 +25,22 @@ if (isset($_SESSION['edit_event_id'])) {
 ?>
 
 <style>
-    .main-content {
-        padding: 20px;
-    }
-    .form-container {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    .form-column {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .form-column label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    .form-column input,
-    .form-column textarea {
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    .form-column input[type="file"] {
-        padding: 3px;
-    }
-    .form-column textarea {
-        resize: vertical;
-        height: 100px;
-    }
-    .submit-btn {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    .submit-btn input {
-        padding: 10px 20px;
-        font-size: 18px;
-        border: none;
-        border-radius: 5px;
-        background-color: #007BFF;
-        color: white;
-        cursor: pointer;
-    }
-    .submit-btn input:hover {
-        background-color: #0056b3;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    table th, table td {
-        border: 1px solid #ccc;
-        padding: 10px;
-        text-align: left;
-    }
-    table th {
-        background-color: #f4f4f4;
-    }
-    table img {
-        max-width: 100px;
-    }
+    .main-content { padding: 20px; }
+    .form-container { max-width: 600px; margin: 0 auto; }
+    .form-column { display: flex; flex-direction: column; gap: 10px; }
+    .form-column label { font-weight: bold; margin-bottom: 5px; }
+    .form-column input, .form-column textarea { padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 5px; }
+    .form-column input[type="file"] { padding: 3px; }
+    .form-column textarea { resize: vertical; height: 100px; }
+    .submit-btn { display: flex; justify-content: center; margin-top: 20px; }
+    .submit-btn input { padding: 10px 20px; font-size: 18px; border: none; border-radius: 5px; background-color: #007BFF; color: white; cursor: pointer; }
+    .submit-btn input:hover { background-color: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table th, table td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    table th { background-color: #f4f4f4; }
+    table img { max-width: 100px; }
     #preview-box { margin-top: 10px; text-align: center; }
-    #preview-img {
-        max-width: 200px;
-        border: 1px solid #ccc;
-        padding: 5px;
-        border-radius: 5px;
-    }
+    #preview-img { max-width: 200px; border: 1px solid #ccc; padding: 5px; border-radius: 5px; }
 </style>
 
 <div class="main-content">
@@ -126,7 +71,8 @@ if (isset($_SESSION['edit_event_id'])) {
     </div>
 
     <?php
-    $sql = "SELECT * FROM events";
+    // --- UPDATED QUERY TO SHOW LATEST FIRST ---
+    $sql = "SELECT * FROM events ORDER BY id DESC";
     $result = $conn->query($sql);
     ?>
 
@@ -149,8 +95,8 @@ if (isset($_SESSION['edit_event_id'])) {
                         <form method='POST' style='display:inline;'>
                             <input type='hidden' name='edit_event_id' value='".$row['id']."'>
                             <button type='submit'>Edit</button>
-                        </form> |
-                        <a href='delete.php?id=".$row['id']."&table=events&file_location=img/events/&redirect=events.php'>Delete</a>
+                        </form> | 
+                        <a href='delete.php?id=".$row['id']."&table=events&file_location=img/events/&redirect=events.php' onclick=\"return confirm('Are you sure?')\">Delete</a>
                       </td>";
                 echo "</tr>";
             }
@@ -160,15 +106,15 @@ if (isset($_SESSION['edit_event_id'])) {
         ?>
     </table>
     <?php include 'footer.php'; ?>
-
 </div>
 
 <script>
 function previewImage(event){
     const img = document.getElementById('preview-img');
     const box = document.getElementById('preview-box');
-    img.src = URL.createObjectURL(event.target.files[0]);
-    box.style.display = 'block';
+    if (event.target.files.length > 0) {
+        img.src = URL.createObjectURL(event.target.files[0]);
+        box.style.display = 'block';
+    }
 }
 </script>
-

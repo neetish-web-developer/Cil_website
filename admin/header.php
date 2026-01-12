@@ -43,6 +43,7 @@ $loggedAdmin = $_SESSION['admin_username'];
     <a href="incubation.php">Incubation App</a>
     <a href="announcement.php">Announcements</a>
     <a href="team.php">Team Members</a>
+    <a href="newsletter.php">Newsletter</a>
     <a href="create_admin.php">Manage Admin</a>
     
     <a href="logout.php" class="logout-btn">Logout</a>

@@ -32,26 +32,24 @@ require 'admin/connection.php';
                 <li><a href="index.php" >Home</a></li>
                 <li><a href="about.php">About</a></li>
                 <li><a href="incubation.php">Incubation Programs</a></li>
-                <li><a href="events.php"class="active">Events</a></li>
-                <li><a href="portfolio.php">Protfolio</a></li>
+                <li><a href="events.php" class="active">Events</a></li>
+                <li><a href="portfolio.php">Portfolio</a></li>
                 <li><a href="team.php">Our Team</a></li>
+                <li><a href="newsletter.php">Newsletters</a></li>
                 <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Rest of the website content goes here -->
-    <!-- Body Of Website Starts -->
-
-    <!-- Contact us page body -->
-    <div align="Centre">
+    <div align="center">
         <div class="event_body">
             <?php
-            // Assuming $conn is your database connection
-            $sql = "SELECT title, description, image FROM events";
+            // Updated SQL query to order by ID descending (Latest first)
+            // If you have a 'created_at' column, you can use: ORDER BY created_at DESC
+            $sql = "SELECT title, description, image FROM events ORDER BY id DESC";
             $result = mysqli_query($conn, $sql);
 
-            if (mysqli_num_rows($result) > 0) {
+            if ($result && mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="event_card">';
                     echo '<img src="admin/img/events/' . $row['image'] . '" class="event_card-img" alt="">';
@@ -70,13 +68,12 @@ require 'admin/connection.php';
             ?>
         </div>
     </div>
-    <script>
-            function openImage(imageUrl) {
-                window.open('admin/img/events/' +imageUrl, '_blank');
-            }
-    </script>
-    <!-- Contact us page body -->
 
+    <script>
+        function openImage(imageUrl) {
+            window.open('admin/img/events/' + imageUrl, '_blank');
+        }
+    </script>
     <footer class="footer">
         <div class="container">
             <div class="footer-columns">
@@ -92,29 +89,25 @@ require 'admin/connection.php';
                         <li><a href="index.php">Home</a></li>
                         <li><a href="about.php">About</a></li>
                         <li><a href="incubation.php">Incubation Programs</a></li>
-                        <!-- <li><a href="events.php">Events</a></li> -->
-                        <li><a href="portfolio.php">Protfolio</a></li>
+                        <li><a href="portfolio.php">Portfolio</a></li>
                         <li><a href="team.php">Our Team</a></li>
+                        <li><a href="newsletter.php">Newsletters</a></li>
                         <li><a href="contact.php" class="active">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-          <h3>Contact Us</h3>
-          <ul class="contact-info">
-            <li><i class="fas fa-map-marker-alt"></i>4<sup>th </sup>Floor, i2h Building, IIT (ISM),</li>
-            <li> Dhanbad, Jharkhand ,India</li>
-            <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
-            <!-- <li><i class="fas fa-phone"></i> +91 9449247076</li> -->
-            <li><i class="fas fa-phone"></i> +91 6299255860</li>
-          </ul>
-        </div>
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i>4<sup>th </sup>Floor, i2h Building, IIT (ISM),</li>
+                        <li> Dhanbad, Jharkhand ,India</li>
+                        <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
+                        <li><i class="fas fa-phone"></i> +91 6299255860</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Body Of Website End -->
     <script src="scriptnav.js"></script>
-
 </body>
-
 </html>

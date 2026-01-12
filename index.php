@@ -15,6 +15,29 @@ require 'admin/connection.php';
     <link rel="stylesheet" href="css/events_card.css">
     <link rel="stylesheet" href="css/notice.css">
     
+    <style>
+        /* Styling for the More Details Button */
+        .btn-more {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #009688;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn-more:hover {
+            background-color: #00796b;
+            color: #fff;
+        }
+        .mission-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,148 +53,126 @@ require 'admin/connection.php';
         </div>
         <nav class="navbar">
             <ul>
-              <li><a href="index.php"class="active">Home</a></li>
+              <li><a href="index.php" class="active">Home</a></li>
               <li><a href="about.php">About</a></li>
               <li><a href="incubation.php">Incubation Programs</a></li>
               <li><a href="events.php">Events</a></li>
-              <li><a href="portfolio.php">Protfolio</a></li>
+              <li><a href="portfolio.php">Portfolio</a></li>
               <li><a href="team.php">Our Team</a></li>
+              <li><a href="newsletter.php">Newsletters</a></li>
               <li><a href="contact.php">Contact</a></li>
             </ul>
         </nav>
     </header>
+
     <div class="slider-container">
       <div class="slider">
         <?php
-       $rows = mysqli_query($conn, "SELECT * FROM home_slider ORDER BY id DESC");
-       ?>
-       <?php foreach($rows as $row) : ?>
-        <img src="admin/img/home/<?php echo $row['image'];?>" alt="Image 1">
-       
+        $rows = mysqli_query($conn, "SELECT * FROM home_slider ORDER BY id DESC");
+        foreach($rows as $row) : ?>
+            <img src="admin/img/home/<?php echo $row['image'];?>" alt="Slider Image">
         <?php endforeach;?>
       </div>
-      <!-- <div class="slider-controls">
-        <button id="prevBtn"></button>
-        <button id="nextBtn"></button>
-      </div> -->
     </div>
        
-    <!-- Announcements Section -->
-        <div class="announcement-bar">
-            <div class="announcement-label">📢 Announcements</div>
-
-            <?php
-            $sql = "SELECT title, message, link FROM announcements WHERE is_pinned=1 ORDER BY created_at DESC LIMIT 1";
-            $res = mysqli_query($conn, $sql);
-            if ($row = mysqli_fetch_assoc($res)):
-                $hasLink = !empty($row['link']); // Check if link exists
-            ?>
-                <div class="announcement-title">
-                    <?php if ($hasLink): ?>
-                        <a href="<?= htmlspecialchars($row['link']) ?>" target="_blank"><?= htmlspecialchars($row['title']) ?></a>
-                    <?php else: ?>
-                        <?= htmlspecialchars($row['title']) ?>
-                    <?php endif; ?>
-                </div>
-
-                <div class="announcement-marquee">
-                    <div class="announcement-text">
-                        <?php if ($hasLink): ?>
-                            <a href="<?= htmlspecialchars($row['link']) ?>" target="_blank"><?= htmlspecialchars($row['message']) ?></a>
-                        <?php else: ?>
-                            <?= htmlspecialchars($row['message']) ?>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-            <!-- VIEW ALL NOTICES -->
-    <div class="announcement-all" class="announcement-label">
-        <a href="notice.php">View All</a>
-    </div>
+    <section class="mission-section">
+        <div class="name">
+            <p>About Us </p>
         </div>
-    <!-- End Announcements Section -->
-
+        <div class="mission-container">
+            <div class="mission-image">
+                <img src="admin/img/home/center-view.jpg" alt="CIL Innovation & Incubation Centre">
+            </div>
+            <div class="mission-text">
+                <p>
+                    Welcome to the CIL Innovation & Incubation Centre. Our mission is to foster a culture of 
+                    innovation and entrepreneurship by providing state-of-the-art infrastructure, mentorship, 
+                    and a collaborative ecosystem for aspiring startups and researchers.
+                </p>
+                <a href="about.php" class="btn-more">More Details</a>
+            </div>
+        </div>
+    </section>
     <div class="name">
       <p>Labs and Infrastructure </p>
     </div>
     <card_body>
-      
-    <div class="card_container">
-        <?php 
-            $rows = mysqli_query($conn, "SELECT * FROM home_labs_infra ORDER BY id DESC");
-            foreach($rows as $row) : ?>
-            <div class="kard" style="--clr:#009688;">
-                <div class="imagebx">
-                    <img src="admin/img/home/<?php echo $row['image'];?>">
-                </div>
-                <div class="content1">
-                    <h2><?php echo $row['name'];?></h2>
-                    <p><?php echo $row['description'];?></p>
-                    <ul>
-                        <li><h4><?php echo $row['point_1'];?></h4></li>
-                        <li><h4><?php echo $row['point_2'];?></h4></li>
-                        <li><h4><?php echo $row['point_3'];?></h4></li>
-                        <li><h4><?php echo $row['point_4'];?></h4></li>
-                    </ul>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-        
-
-       
+      <div class="card_container">
+          <?php 
+              $rows = mysqli_query($conn, "SELECT * FROM home_labs_infra ORDER BY id DESC");
+              foreach($rows as $row) : ?>
+              <div class="kard" style="--clr:#009688;">
+                  <div class="imagebx">
+                      <img src="admin/img/home/<?php echo $row['image'];?>">
+                  </div>
+                  <div class="content1">
+                      <h2><?php echo $row['name'];?></h2>
+                      <p><?php echo $row['description'];?></p>
+                      <ul>
+                          <li><h4><?php echo $row['point_1'];?></h4></li>
+                          <li><h4><?php echo $row['point_2'];?></h4></li>
+                          <li><h4><?php echo $row['point_3'];?></h4></li>
+                          <li><h4><?php echo $row['point_4'];?></h4></li>
+                      </ul>
+                  </div>
+              </div>
+          <?php endforeach; ?>
+      </div>
     </card_body> 
+
     <link rel="stylesheet" href="css/swiper-bundle.min.css" />
-    
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- Boxicons CSS -->
-    
-          <div class="name">
-            <p>Latest Events </p>
-          </div>
-
-
-          
-
-
-          <div class="event_body">
-            <?php
-            // Assuming $conn is your database connection
-            $sql = "SELECT title, description, image FROM events ORDER BY date DESC LIMIT 4";
-            $result = mysqli_query($conn, $sql);
-
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="event_card">';
-                    echo '<img src="admin/img/events/' . $row['image'] . '" class="event_card-img" alt="">';
-                    echo '<div class="event_card_body">';
-                    echo '<h1 class="event_card_title">' . $row['title'] . '</h1>';
-                    echo '<p class="event_card_info">' . $row['description'] . '</p>';
-                    echo '<button onclick="openImage(\'' . $row['image'] . '\')" class="event_card_btn">Open Image</button>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            } else {
-                echo "No events found";
-            }
-
-            
-            ?>
+    <section class="supported-by">
+        <div class="container">
+            <h3 class="support-title">Supported By</h3>
+            <div class="logo-grid">
+                <div class="support-logo">
+                    <img src="admin/img/home/coal.png" alt="Coal India Limited">
+                </div>
+                <div class="support-logo">
+                    <img src="admin/img/home/aim.png" alt="Atal Innovation Mission">
+                </div>
+                <div class="support-logo">
+                    <img src="admin/img/home/ism.png" alt="IIT (ISM) Dhanbad">
+                </div>
+            </div>
         </div>
+    </section>
 
+    <div class="name">
+        <p>Latest Events </p>
+    </div>
 
-          
- 
-          <script>
-            function openImage(imageUrl) {
-                window.open('admin/img/events/' +imageUrl, '_blank');
+    <div class="event_body">
+        <?php
+        $sql = "SELECT title, description, image FROM events ORDER BY id DESC LIMIT 4";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo '<div class="event_card">';
+                echo '<img src="admin/img/events/' . $row['image'] . '" class="event_card-img" alt="">';
+                echo '<div class="event_card_body">';
+                echo '<h1 class="event_card_title">' . $row['title'] . '</h1>';
+                echo '<p class="event_card_info">' . $row['description'] . '</p>';
+                echo '<button onclick="openImage(\'' . $row['image'] . '\')" class="event_card_btn">Open Image</button>';
+                echo '</div>';
+                echo '</div>';
             }
-        </script>
+        } else {
+            echo "No events found";
+        }
+        ?>
+    </div>
 
+    <script>
+        function openImage(imageUrl) {
+            window.open('admin/img/events/' + imageUrl, '_blank');
+        }
+    </script>
 
-<div>
+    <div>
         <div class="name">
             <p>What Our Incubatees Say :</p>
         </div>
@@ -179,7 +180,6 @@ require 'admin/connection.php';
             <div class="testimonial mySwiper">
                 <div class="testi-content swiper-wrapper">
                     <?php
-                    // Fetch data from the portfolio table
                     $sql = "SELECT name, image, message FROM portfolio";
                     $result = mysqli_query($conn, $sql);
 
@@ -197,7 +197,6 @@ require 'admin/connection.php';
                     } else {
                         echo '<p>No testimonials found.</p>';
                     }
-
                     mysqli_close($conn);
                     ?>
                 </div>
@@ -206,79 +205,41 @@ require 'admin/connection.php';
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-
-        <!-- Swiper JS -->
         <script src="js/swiper-bundle.min.js"></script>
-
-        <!-- JavaScript -->
         <script src="js/script.js"></script>
     </div>
- 
-<!--contact us page body -->
 
-
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-columns">
                 <div class="footer-column">
                     <h3>About Us</h3>
                     <p>Indian Institute of Technology (Indian School of Mines) Dhanbad establishes Coal India Innovation
-                        Centre (CII), providing an enabling environment for young innovators to shape their ideas. It
-                        contributes to youth development and societal growth.</p>
+                        Centre (CII), providing an enabling environment for young innovators to shape their ideas.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="quick-links">
-                        <!-- <li><a href="index.php">Home</a></li> -->
                         <li><a href="about.php">About</a></li>
                         <li><a href="incubation.php">Incubation Programs</a></li>
                         <li><a href="events.php">Events</a></li>
-                        <li><a href="portfolio.php">Protfolio</a></li>
+                        <li><a href="portfolio.php">Portfolio</a></li>
                         <li><a href="team.php">Our Team</a></li>
+                        <li><a href="newsletter.php">Newsletters</a></li>
                         <li><a href="contact.php" class="active">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-          <h3>Contact Us</h3>
-          <ul class="contact-info">
-            <li><i class="fas fa-map-marker-alt"></i>4<sup>th </sup>Floor, i2h Building, IIT (ISM),</li>
-            <li> Dhanbad, Jharkhand ,India</li>
-            <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
-            <!-- <li><i class="fas fa-phone"></i> +91 9449247076</li> -->
-            <li><i class="fas fa-phone"></i> +91 6299255860</li>
-          </ul>
-        </div>
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>4<sup>th </sup>Floor, i2h Building, IIT (ISM), Dhanbad</li>
+                        <li>cii@iitism.ac.in</li>
+                        <li>+91 6299255860</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
     <script src="scriptnav.js"></script>
-    <script>
-function initMarquee() {
-    const marquee = document.querySelector('.announcement-marquee');
-    const text = document.querySelector('.announcement-text');
-
-    if (!marquee || !text) return;
-
-    const marqueeWidth = marquee.clientWidth;
-    const textWidth = text.scrollWidth;
-
-    // Distance text should move (px)
-    const distance = marqueeWidth - textWidth;
-
-    // SPEED: pixels per second (adjust this)
-    const speed = 80; // 80px/sec = smooth & readable
-
-    // Time = distance / speed
-    const duration = Math.abs(distance) / speed;
-
-    marquee.style.setProperty('--marquee-width', distance + 'px');
-    marquee.style.setProperty('--marquee-duration', duration + 's');
-}
-
-window.addEventListener('load', initMarquee);
-window.addEventListener('resize', initMarquee);
-</script>
-
-
 </body>
 </html>
