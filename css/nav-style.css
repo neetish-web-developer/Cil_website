@@ -292,3 +292,45 @@ body.dark .search-field i{
         margin-top: 20px;
     }
 }
+/* ===== Dropdown Menu Sub Menu(ipr) ===== */
+.navbar ul li {
+    position: relative;
+}
+
+.has-submenu > a {
+    cursor: pointer;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 180px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border-radius: 6px;
+    z-index: 999;
+}
+
+.submenu li {
+    width: 100%;
+}
+
+.submenu li a {
+    display: block;
+    padding: 12px 16px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.submenu li a:hover {
+    background: #f1f5f9;
+    color: #1d4ed8;
+}
+
+/* Show dropdown on hover */
+.has-submenu:hover .submenu {
+    display: block;
+}

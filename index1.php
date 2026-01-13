@@ -14,6 +14,29 @@ require 'admin/connection.php';
     <link rel="stylesheet" href="css/card_style.css">
     <link rel="stylesheet" href="css/events_card.css">
     <link rel="stylesheet" href="css/notice.css">
+    <style>
+        /* Styling for the More Details Button */
+        .btn-more {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #009688;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .btn-more:hover {
+            background-color: #00796b;
+            color: #fff;
+        }
+        .mission-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
     
 </head>
 
@@ -108,6 +131,7 @@ require 'admin/connection.php';
                 innovation and entrepreneurship by providing state-of-the-art infrastructure, mentorship, 
                 and a collaborative ecosystem for aspiring startups and researchers.
             </p>
+            <a href="about.php" class="btn-more">More Details</a>
         </div>
     </div>
 </section>

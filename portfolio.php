@@ -62,6 +62,11 @@ require 'admin/connection.php';
               <h2><?php echo $row['company_name']; ?></h2>
               <p><?php echo $row['message']; ?></p>
               <h4>Director - <?php echo $row['name']; ?></h4>
+              <h4>Product Name- <?php echo $row['product_name']; ?></h4>
+              <h4>Date of PreIncubation - <?php echo $row['preincubation_date']; ?></h4>
+              <h4>TRL Level - <?php echo $row['trl_level']; ?>, <a href="https://www.mca.gov.in/content/mca/global/en/mca/fo-llp-services/company-llp-name-search.html" target="blank">Company Status</a></h4>
+              
+
             </div>
           </div>
         <?php

@@ -42,28 +42,35 @@ require 'admin/connection.php';
 
 <body>
     <header>
-        <a href="index.php" class="logo">
-            <i class="ri-home-heart-fill"></i>
-            <span><img src="Logo.jpeg" alt="CIL Innovation & Incubation Centre"></span>
-        </a>
-        <div class="menu-toggle" id="menu-icon">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        <nav class="navbar">
-            <ul>
-              <li><a href="index.php" class="active">Home</a></li>
-              <li><a href="about.php">About</a></li>
-              <li><a href="incubation.php">Incubation Programs</a></li>
-              <li><a href="events.php">Events</a></li>
-              <li><a href="portfolio.php">Portfolio</a></li>
-              <li><a href="team.php">Our Team</a></li>
-              <li><a href="newsletter.php">Newsletters</a></li>
-              <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <a href="index.php" class="logo">
+        <i class="ri-home-heart-fill"></i>
+        <span><img src="Logo.jpeg" alt="CIL Innovation & Incubation Centre"></span>
+    </a>
+    <div class="menu-toggle" id="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.php" class="active">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="incubation.php">Incubation Programs</a></li>
+            <li><a href="events.php">Events</a></li>
+            
+            <li class="dropdown-item">
+    <a href="portfolio.php" class="nav-link">Portfolio</a>
+    <ul class="submenu">
+        <li><a href="ipr.php">IPR</a></li>
+    </ul>
+</li>
+
+            <li><a href="team.php">Our Team</a></li>
+            <li><a href="newsletter.php">Newsletters</a></li>
+            <li><a href="contact.php">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
     <div class="slider-container">
       <div class="slider">
@@ -85,9 +92,7 @@ require 'admin/connection.php';
             </div>
             <div class="mission-text">
                 <p>
-                    Welcome to the CIL Innovation & Incubation Centre. Our mission is to foster a culture of 
-                    innovation and entrepreneurship by providing state-of-the-art infrastructure, mentorship, 
-                    and a collaborative ecosystem for aspiring startups and researchers.
+                    IIT(ISM) and CIL are collaborated to set up the CII Center with the objective to nurture innovators with technical & social impact to ideate in the domain of Technology, Innovation and Community Skill Development . 
                 </p>
                 <a href="about.php" class="btn-more">More Details</a>
             </div>
