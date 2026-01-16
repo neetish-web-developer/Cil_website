@@ -4,6 +4,7 @@ include 'admin/connection.php';
 /* =========================
    FETCH APPLICATION STATUS
 ========================= */
+// Fetch the current status from the database to decide whether to show the button
 $statusResult = $conn->query(
     "SELECT application_status FROM incubation_settings WHERE id=1"
 );
@@ -25,12 +26,6 @@ $applicationStatus = $statusRow['application_status'];
     <link rel="stylesheet" href="css/style_about.css">
 
     <script src="js/script_image_slider.js" defer></script>
-
-    <script>
-        function stayTunedPopup() {
-            alert("🚀 Stay Tuned!\n\nThe Call for Applications will open soon.\nPlease keep checking our website for updates.");
-        }
-    </script>
 </head>
 
 <body>
@@ -61,7 +56,6 @@ $applicationStatus = $statusRow['application_status'];
     </nav>
 </header>
 
-<!-- INCUBATION CONTENT -->
 <div class="container_incu">
 
     <div class="row">
@@ -106,11 +100,8 @@ $applicationStatus = $statusRow['application_status'];
                 <li class="incu_li">Accept offer, sign agreements & start venture</li>
             </ol>
 
-            <!-- APPLY BUTTON -->
             <?php if ($applicationStatus === 'OPEN'): ?>
                 <a href="incubationForm.php" class="apply-now-btn">Apply Now</a>
-            <?php else: ?>
-                <button class="apply-now-btn" onclick="stayTunedPopup()">Apply Now</button>
             <?php endif; ?>
         </div>
     </div>
@@ -140,19 +131,14 @@ $applicationStatus = $statusRow['application_status'];
 
                 <li class="incu_li">Access to service providers (Legal, Audit, IP etc.)</li>
 
-                <!-- APPLY BUTTON -->
                 <?php if ($applicationStatus === 'OPEN'): ?>
                     <a href="incubationForm.php" class="apply-now-btn">Apply Now</a>
-                <?php else: ?>
-                    <button class="apply-now-btn" onclick="stayTunedPopup()">Apply Now</button>
                 <?php endif; ?>
             </ul>
         </div>
     </div>
 
 </div>
-<!-- END CONTENT -->
-
 <footer class="footer">
     <div class="container">
         <div class="footer-columns">
@@ -189,6 +175,8 @@ $applicationStatus = $statusRow['application_status'];
         </div>
     </div>
 </footer>
+
+<script src="scriptnav.js"></script>
 
 </body>
 </html>
