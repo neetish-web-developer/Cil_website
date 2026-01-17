@@ -1,6 +1,19 @@
 <?php
 // CRITICAL: session_start() must be the very first thing in the file.
 session_start();
+include 'admin/connection.php';
+
+/* ============================================================
+   SECURITY CHECK: Redirect if applications are not 'OPEN'
+   ============================================================ */
+$statusResult = $conn->query("SELECT application_status FROM incubation_settings WHERE id=1");
+$statusRow = $statusResult->fetch_assoc();
+
+if (!$statusRow || $statusRow['application_status'] !== 'OPEN') {
+    // If status is not OPEN, do not allow access to this form
+    header("Location: incubation.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,21 +84,17 @@ session_start();
         // --- PHP ALERT AND REDIRECT LOGIC ---
         if (isset($_SESSION['message'])) {
             $message = htmlspecialchars($_SESSION['message']);
-            // Determine the page to redirect to. Default to current page on error.
             $redirect_page = isset($_SESSION['redirect_to']) ? htmlspecialchars($_SESSION['redirect_to']) : 'incubation.php';
             
-            // Generate the JavaScript to show the alert
             echo "<script>";
             echo "alert('$message');";
             
-            // Redirect only if the submission was successful
             if (strpos($message, 'successfully') !== false) {
                 echo "window.location.href = '$redirect_page';";
             }
             
             echo "</script>";
             
-            // Clear the session variables
             unset($_SESSION['message']);
             unset($_SESSION['redirect_to']);
         }
@@ -199,10 +208,10 @@ session_start();
                         <li><a href="about.php">About</a></li>
                         <li><a href="incubation.php">Incubation Programs</a></li>
                         <li><a href="events.php">Events</a></li>
-                        <li><a href="portfolio.php">Protfolio</a></li>
+                        <li><a href="portfolio.php">Portfolio</a></li>
                         <li><a href="team.php">Our Team</a></li>
                         <li><a href="newsletter.php">Newsletters</a></li>
-                        <li><a href="contact.php" class="active">Contact</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -211,7 +220,6 @@ session_start();
             <li><i class="fas fa-map-marker-alt"></i>4<sup>th </sup>Floor, i2h Building, IIT (ISM),</li>
             <li> Dhanbad, Jharkhand ,India</li>
             <li><i class="fas fa-envelope"></i> cii@iitism.ac.in</li>
-            <!-- <li><i class="fas fa-phone"></i> +91 9449247076</li> -->
             <li><i class="fas fa-phone"></i> +91 6299255860</li>
           </ul>
         </div>
@@ -227,7 +235,6 @@ session_start();
             let phone = this.value.trim();
             let errorBox = document.getElementById("phoneError");
 
-            // Allow only digits and limit to 10 characters
             this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
             phone = this.value.trim();
 
@@ -242,13 +249,11 @@ session_start();
 
         /* REFRESH CAPTCHA */
         function refreshCaptcha() {
-            // Appends a unique timestamp to force the browser to load a new image
             document.getElementById("captchaImage").src = "captcha.php?" + Date.now();
         }
 
-        /* CO-FOUNDERS LIVE VALIDATION (NEW) */
+        /* CO-FOUNDERS LIVE VALIDATION */
         const coFoundersInput = document.getElementById("co-founders");
-        // Dynamically create error container if it doesn't exist
         let coFoundersError = document.getElementById('coFoundersError');
         if (!coFoundersError) {
              coFoundersError = document.createElement('p');
@@ -260,32 +265,26 @@ session_start();
         coFoundersInput.addEventListener("input", function() {
             let value = this.value.trim();
             coFoundersError.innerText = "";
-
-            // 1. Enforce only digits and limit length (e.g., max 2 digits for 20)
             this.value = value.replace(/[^0-9]/g, '').slice(0, 2);
             value = this.value;
 
-            // 2. Check max limit
             if (value !== "" && parseInt(value) > 20) {
                 coFoundersError.innerText = "Maximum number of co-founders is 20.";
             }
         });
 
-
-        /* FORM SUBMISSION VALIDATION (Combined Checks) */
+        /* FORM SUBMISSION VALIDATION */
         document.getElementById("incubationForm").addEventListener("submit", function(e) {
-
             let phone = document.getElementById("phone").value.trim();
             let captchaInput = document.getElementById("captchaInput").value.trim();
             let coFounders = document.getElementById("co-founders").value.trim(); 
 
             let phoneError = document.getElementById("phoneError");
             let captchaError = document.getElementById("captchaError");
-            let coFoundersError = document.getElementById("coFoundersError"); // Use existing element
+            let coFoundersError = document.getElementById("coFoundersError");
 
             let isValid = true;
 
-            // 1. Phone validation
             if (phone.length !== 10 || !/^[6-9][0-9]{9}$/.test(phone)) {
                 phoneError.innerText = "Enter a valid 10-digit Indian mobile number.";
                 isValid = false;
@@ -293,7 +292,6 @@ session_start();
                 phoneError.innerText = "";
             }
 
-            // 2. Captcha validation
             if (captchaInput === "") {
                 captchaError.innerText = "Captcha required!";
                 isValid = false;
@@ -301,7 +299,6 @@ session_start();
                 captchaError.innerText = "";
             }
 
-            // 3. Co-Founders validation (MUST BE NUMBER and MAX 20)
             if (coFounders === "" || !/^\d+$/.test(coFounders)) {
                 coFoundersError.innerText = "Number of co-founders is required and must be a number.";
                 isValid = false;
@@ -315,7 +312,5 @@ session_start();
             if (!isValid) e.preventDefault();
         });
     </script>
-
 </body>
-
 </html>

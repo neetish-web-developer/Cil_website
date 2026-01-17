@@ -83,6 +83,7 @@ $result = $conn->query($sql);
             <th>Investment Received</th>
             <th>No. of Co-founders</th>
             <th>Proposal</th>
+            <th>Time</th>
             <th>Actions</th>
         </tr>
 
@@ -98,6 +99,7 @@ $result = $conn->query($sql);
                 echo "<td>{$row['inv_received']}</td>";
                 echo "<td>{$row['co_founder']}</td>";
                 echo "<td>{$row['proposal']}</td>";
+                echo "<td>{$row['time']}</td>";
                 echo "<td>
                         <a href='delete2.php?id={$row['id']}&table=incubation&redirect=incubation.php'
                            onclick=\"return confirm('Are you sure you want to delete this application?');\">
