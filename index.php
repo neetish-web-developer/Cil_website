@@ -37,6 +37,41 @@ require 'admin/connection.php';
             flex-direction: column;
             align-items: flex-start;
         }
+        /* Social Bar */
+.social-bar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.social-bar a {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.social-bar svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
+
+/* Brand Colors */
+.linkedin { background: #0077b5; }
+.instagram { background: #e1306c; }
+.x { background: #000000; }
+
+/* Hover Effect */
+.social-bar a:hover {
+  width: 55px;
+}
     </style>
 </head>
 
@@ -81,6 +116,30 @@ require 'admin/connection.php';
         <?php endforeach;?>
       </div>
     </div>
+
+    <!-- Social Bar -->
+    <div class="social-bar">
+        <a href="https://www.linkedin.com/in/cil-innovation-and-incubation-centre-047a93281" target="_blank" class="linkedin" aria-label="LinkedIn">
+        <!-- LinkedIn SVG -->
+        <svg viewBox="0 0 24 24">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM8 8h4.8v2.2h.1c.7-1.3 2.4-2.7 4.9-2.7 5.2 0 6.2 3.4 6.2 7.8V24h-5V16.3c0-1.8 0-4.1-2.5-4.1s-2.9 1.9-2.9 4V24H8z"/>
+        </svg>
+        </a>
+
+        <a href="https://www.instagram.com/cii_centre/" target="_blank" class="instagram" aria-label="Instagram">
+        <!-- Instagram SVG -->
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.4.5.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1.2.5 2.4.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.4-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1.2.4-2.4.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.4-.5-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1.2-.5-2.4-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-2 .5-2.4.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1.2-.4 2.4-.5C8.4 2.2 8.8 2.2 12 2.2zm0 3.6a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.9a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0z"/>
+        </svg>
+        </a>
+
+        <a href="https://x.com/CIIcentre" target="_blank" class="x" aria-label="X">
+        <!-- X (Twitter) SVG -->
+        <svg viewBox="0 0 24 24">
+            <path d="M18.9 2H22l-7.5 8.6L23 22h-6.7l-5.2-6.5L5.3 22H2l8-9.2L1 2h6.9l4.7 5.9L18.9 2z"/>
+        </svg>
+        </a>
+    </div> 
        
     <section class="mission-section">
         <div class="name">
